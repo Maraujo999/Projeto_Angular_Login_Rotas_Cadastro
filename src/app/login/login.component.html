@@ -1,0 +1,62 @@
+<div class="sidenav">
+  <div class="login-main-text">
+    <h2>
+      Application<br />
+      Login Page
+    </h2>
+    <p>Login or register from here to access.</p>
+  </div>
+</div>
+<div class="main d-flex justify-content-righ">
+  <div class="col-md-6 col-sm-12">
+    <div class="login-form">
+      <form>
+        <div *ngIf="msg" class="wow animated wobble">
+          <div class="alert alert-dark" role="alert">
+            Nome ou senha inválidos.
+          </div>
+        </div>
+
+        <div *ngIf="msg1" class="wow animated wobble">
+          <div class="alert alert-secundary" role="alert">
+            <span class="display-4">Nome ou senha vazios.</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>User Name</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="User Name"
+            #login
+            [(ngModel)]="nome"
+          />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Password"
+            #password
+          />
+        </div>
+        <button
+          type="submit"
+          class="btn btn-black"
+          (click)="valiaUser(login.value, password.value)"
+          [disabled]="login.length === 0"
+        >
+          Login
+        </button>
+        <button type="submit" class="btn btn-secondary">Register</button>
+        <!-- <div class="row">
+            <div *ngIf='msg'>
+            {{msg}}
+            </div>
+            </div> -->
+      </form>
+    </div>
+  </div>
+</div>

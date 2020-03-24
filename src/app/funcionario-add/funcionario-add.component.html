@@ -1,0 +1,39 @@
+<div class="container p-3">
+  <div
+    class="alert alert-success text-center shadow wow animated tada mx-5"
+    role="alert"
+    *ngIf="adicionado"
+  >
+    <i class="fas fa-user-astronaut"></i>
+    Funcionário adicionao: <strong>{{ nome }}</strong>
+    <i class="fas fa-space-shuttle mr-5"></i>
+  </div>
+
+  <div class="md-form wow animated fadeInLeftBig">
+    <mdb-icon fas icon="user-astronaut" class="prefix text-primary"></mdb-icon>
+    <label for="formGroupExampleInput">Nome</label>
+    <input
+      type="text"
+      class="form-control"
+      mdbInput
+      placeholder="Example"
+      [(ngModel)]="nome"
+      (focus)="adicionado = false"
+    />
+  </div>
+  <div class="d-flex justify-content-center wow animated fadeInLeftBig">
+    <button
+      type="button"
+      class="btn btn-block btn-primary btn-rounded btn-lg blue-gradient"
+      (click)="adicionar()"
+      [disabled]="nome.length == 0"
+    >
+      Adicionar
+    </button>
+  </div>
+</div>
+<div class="row mt-3">
+  <div class="col-3 mt-3" *ngFor="let funcionario of funcionarios">
+    <app-funcionario-card [funcionario]="funcionario"></app-funcionario-card>
+  </div>
+</div>
